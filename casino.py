@@ -48,17 +48,17 @@ while pot > 0:
     time.sleep(3)
     if res == case:
         pot += mise * 2
-        print(res, " - GG t tro for wallah")
+        print(res, " - GG")
 
     elif case % 2 == res % 2:
-        print(res, " - pas ouf mais t rembourser")
+        print(res, " - tu es remboursé")
     else:
         pot -= mise
-        print(res," - reesaye bg")
+        print(res," - perdu, reesaye")
         
     print("Il te reste ", pot,"€")
     time.sleep(3)
-print("plus d'argent, va retirer stp")
+print("plus d'argent, désolé")
 
 
 
