@@ -1,64 +1,58 @@
-# a = random.randint(1,2)
-# if a == 1:
-#     print("ok")
-# else:
-#     print("nop")
-
 import random
 import time
 
 pot = 0
 while pot <= 0 or pot > 10000:
     try:
-        pot = int(input("Quel est votre pot de départ ?"))
+        pot = int(input("What's your begining pot ?"))
         assert pot > 0 and pot < 10000
     except AssertionError:
-        print("Veuillez rentrer un nombre supérieur à 0 et inférieur à 10000")
+        print("Type a number bigger than 0 and smaller than 10000")
     except ValueError:
-        print("Veuillez rentrer un nombre")
+        print("Type a number")
         pot = 0
     
-print("Vous commencer avec ", pot,"€")
+print("You start with ", pot,"€")
 
 while pot > 0:
-    case = -1
-    while case <=0 or case >50:
+    number = -1
+    while number <=0 or number >50:
         try:
-            case = int(input("Misez sur un nombre entre 1 et 50:"))
-            assert case > 0 and case < 50
+            number = int(input("Bet on a number between 0 and 50"))
+            assert number > 0 and number < 50
         except AssertionError:
-            print("Veuillez rentrer un nombre supérieur à 0 et inférieur à 50")
+            print("Type a number bigger than 0 and smaller than 50")
         except ValueError:
-            print("Veuillez rentrer un nombre")
+            print("Type a number")
 
-    mise = -1        
-    while mise <=0 or mise > pot:
+    bet = -1        
+    while bet <=0 or bet > pot:
         try:
-            mise = int(input("Misez un montant de votre pot:"))
-            assert mise > 0 and mise < pot
+            bet = int(input("Bet a amount of your pot:"))
+            assert bet > 0 and bet < pot
         except AssertionError:
-            print("Veuillez rentrer un nombre supérieur à 0 et inférieur à ", pot)
+            print("Type a number bigger than 0 and smaller than ", pot)
         except ValueError:
-            print("Veuillez rentrer un nombre")
+            print("Type a number")
 
-    print("Vous avez misé ", mise,"€ sur la case ", case,",Bonne chance !")
+    print("You bet ", bet,"€ on number ", number,",Good luck !")
     time.sleep(2)
-    print("ça tourne")    
+    print("Wheel is rolling..")    
     res = random.randint(1, 50)
     time.sleep(3)
-    if res == case:
-        pot += mise * 2
+    if res == number:
+        pot += bet * 2
         print(res, " - GG")
 
-    elif case % 2 == res % 2:
-        print(res, " - tu es remboursé")
+    elif number % 2 == res % 2:
+        print(res, " - You are refund")
     else:
-        pot -= mise
-        print(res," - perdu, reesaye")
+        pot -= bet
+        print(res," - lost, try again")
         
-    print("Il te reste ", pot,"€")
+    print("You have ", pot,"€ left")
     time.sleep(3)
-print("plus d'argent, désolé")
+print("Not enough money to play again, sorry")
 
 
 
